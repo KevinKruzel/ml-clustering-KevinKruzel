@@ -1,0 +1,21 @@
+[INFO] [1706239644.303752, 32.715000]:  header  seq: 13
+stamp: 
+  secs: 31
+  nsecs: 866000000
+frame_id: "map"
+[INFO] [1706239644.321048, 32.736000]:  info  map_load_time: 
+  secs: 0
+  nsecs:         0
+resolution: 0.05000000074505806
+width: 384
+height: 384
+origin: 
+  position: 
+    x: -10.0
+    y: -10.0
+    z: 0.0
+  orientation: 
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0
