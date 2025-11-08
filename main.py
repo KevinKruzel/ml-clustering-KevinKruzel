@@ -7,7 +7,11 @@ from frontiers import locate_frontiers, cluster_frontiers, observation_points
 from clustering import cluster_points
 from utils.visualization import plot_clusters
 
-
+# Added imports to create plots
+import matplotlib
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
+from pathlib import Path
 
 def main():
     '''
@@ -64,6 +68,11 @@ def main():
     # visualize grid and frontiers
     vis_grid = np.array(occupancy_grid).reshape((grid_width,grid_width))
     plot_clusters(vis_grid, frontier_points, centers=obs_points)
+
+    # Added code to save plots
+    Path("artifacts").mkdir(exist_ok=True)
+    plt.savefig(f"artifacts/{method}.png", dpi=200, bbox_inches="tight")
+    plt.close()
 
 if __name__ == "__main__":
     main()

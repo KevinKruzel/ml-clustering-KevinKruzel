@@ -1,4 +1,5 @@
 import numpy as np
+from sklearn.cluster import KMeans, AgglomerativeClustering
 
 
 def cluster_points(points: np.ndarray, method="kmeans"):
@@ -9,12 +10,15 @@ def cluster_points(points: np.ndarray, method="kmeans"):
         return np.array([])
 
     if method == "kmeans":
-        # Your KMeans clustering code goes here
-        raise ValueError("Implement kmeans frontier clustering.")
+        km = KMeans(n_clusters=10, n_init=10, random_state=0)
+        km.fit(points)
+        return km.cluster_centers_
 
     elif method == "hierarchical":
-        # Your hierarchical clustering code goes here
-        raise ValueError("Implement hierarchical frontier clustering.")
+        ag = AgglomerativeClustering(n_clusters=10, linkage="ward")
+        labels = ag.fit_predict(points)
+        centers = np.vstack([points[labels == i].mean(axis=0) for i in range(10)])
+        return centers
 
     else:
         raise ValueError(f"Unknown method: {method}")
